@@ -1,0 +1,52 @@
+buildscript {
+  ext {
+    changeLog = "$projectDir/src/main/db/changelog-master.yaml"
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    classpath group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+    classpath group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+  }
+}
+
+plugins {
+  id 'com.github.ben-manes.versions' version '0.15.0'
+  id 'org.liquibase.gradle' version '1.2.4'
+}
+
+task mysql {
+  doLast {
+    apply from: "creds/${name}.gradle"
+
+    liquibase {
+      activities {
+        main {
+          changeLogFile changeLog
+          url url
+          username username
+          password password
+        }
+      }
+    }
+  }
+}
+
+task postgres {
+  doLast {
+    apply from: "creds/${name}.gradle"
+
+    liquibase {
+      activities {
+        main {
+          changeLogFile changeLog
+          url url
+          username username
+          password password
+        }
+      }
+    }
+  }
+}

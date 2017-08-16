@@ -1,0 +1,36 @@
+Each inventory item will have the following information:
+
+01. Inventory ID
+02. Name
+03. Description
+04. Categories (object can belong to multiple categories) *
+05. Keywords *
+06. Object File (DAE, OBJ, etc. formats)
+07. Object File Format
+08. Object Thumbnail
+09. Object Version
+10. Owner Brand (single brand)
+11. Artist (single artist)
+12. Created Date/Time
+13. Last Updated Date/Time
+14. Polygons Count
+15. Vertices Count
+16. Animated (Y/N)
+17. Rigged (Y/N)
+18. Textures (Y/N)
+19. Materials (Y/N)
+20. UV Mapping (Y/N)
+21. Geometry (Polygon Mesh, etc.) -- one from the enumerated list *
+22. Unwrapped UV (Overlapping, etc.) -- one from the enumerated list *
+
+* Optional
+
+Liquibase format -> Postgres running locally
+
+Identify foreign keys and tables
+
+docker pull postgres:9.6.4-alpine
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres:9.6.4-alpine
+docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
+docker run -it --rm --link some-postgres:postgres postgres:9.6.4-alpine psql -h postgres -U postgres
+  mysecretpassword

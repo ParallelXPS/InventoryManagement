@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
+  - include:
+      file: migrations/changelog-1.0.yaml
+      relativeToChangelogFile: true

@@ -1,0 +1,6 @@
+# Gradle temp directory
+.gradle/
+# Vim swap files
+*.swp
+# Gradle build artifacts
+build/

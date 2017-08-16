@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: zellster
+      changes:
+        - createTable:
+            tableName: employee_yaml
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                      primaryKey: true
+                      nullable: false
