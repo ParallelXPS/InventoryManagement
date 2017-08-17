@@ -190,6 +190,12 @@ databaseChangeLog:
                   type: boolean
                   constraints:
                     nullable: false
+              - column:
+                  name: GEOMETRY_ID
+                  type: int
+              - column:
+                  name: MAPPING_ID
+                  type: int
   - changeSet:
       id: 8
       author: zellster
@@ -206,3 +212,87 @@ databaseChangeLog:
             referencedTableName: ARTISTS
             referencedColumnNames: ID
             constraintName: ITEMS_ARTISTS_FK
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS
+            baseColumnNames: GEOMETRY_ID
+            referencedTableName: GEOMETRIES
+            referencedColumnNames: ID
+            constraintName: ITEMS_GEOMETRIES_FK
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS
+            baseColumnNames: MAPPING_ID
+            referencedTableName: MAPPINGS
+            referencedColumnNames: ID
+            constraintName: ITEMS_MAPPINGS_FK
+  - changeSet:
+      id: 9
+      author: zellster
+      changes:
+        - createTable:
+            tableName: ITEMS_CATEGORIES
+            columns:
+              - column:
+                  name: ITEM_ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CATEGORY_ID
+                  type: int
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 10
+      author: zellster
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS_CATEGORIES
+            baseColumnNames: ITEM_ID
+            referencedTableName: ITEMS
+            referencedColumnNames: ID
+            constraintName: ITEMS_CATEGORIES_ITEMS_FK
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS_CATEGORIES
+            baseColumnNames: CATEGORY_ID
+            referencedTableName: CATEGORIES
+            referencedColumnNames: ID
+            constraintName: ITEMS_CATEGORIES_CATEGORIES_FK
+        - addPrimaryKey:
+            tableName: ITEMS_CATEGORIES
+            columnNames: ITEM_ID, CATEGORY_ID
+  - changeSet:
+      id: 11
+      author: zellster
+      changes:
+        - createTable:
+            tableName: ITEMS_KEYWORDS
+            columns:
+              - column:
+                  name: ITEM_ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: KEYWORD_ID
+                  type: int
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 12
+      author: zellster
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS_KEYWORDS
+            baseColumnNames: ITEM_ID
+            referencedTableName: ITEMS
+            referencedColumnNames: ID
+            constraintName: ITEMS_KEYWORDS_ITEMS_FK
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS_KEYWORDS
+            baseColumnNames: KEYWORD_ID
+            referencedTableName: KEYWORDS
+            referencedColumnNames: ID
+            constraintName: ITEMS_KEYWORDS_KEYWORDS_FK
+        - addPrimaryKey:
+            tableName: ITEMS_KEYWORDS
+            columnNames: ITEM_ID, KEYWORD_ID

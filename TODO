@@ -25,10 +25,6 @@ Each inventory item will have the following information:
 
 * Optional
 
-Liquibase format -> Postgres running locally
-
-Identify foreign keys and tables
-
 docker pull postgres:9.6.4-alpine
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres:9.6.4-alpine
 docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
