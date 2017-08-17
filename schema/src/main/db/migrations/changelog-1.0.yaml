@@ -1,16 +1,208 @@
 databaseChangeLog:
+  - objectQuotingStrategy: QUOTE_ALL_OBJECTS
   - changeSet:
       id: 1
       author: zellster
       changes:
         - createTable:
-            tableName: employee_yaml
+            tableName: CATEGORIES
             columns:
               - column:
-                  name: id
+                  name: ID
                   type: int
                   autoIncrement: true
                   startWith: 1
                   constraints:
-                      primaryKey: true
-                      nullable: false
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: zellster
+      changes:
+        - createTable:
+            tableName: KEYWORDS
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: 3
+      author: zellster
+      changes:
+        - createTable:
+            tableName: BRANDS
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: 4
+      author: zellster
+      changes:
+        - createTable:
+            tableName: ARTISTS
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: 5
+      author: zellster
+      changes:
+        - createTable:
+            tableName: GEOMETRIES
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: 6
+      author: zellster
+      changes:
+        - createTable:
+            tableName: MAPPINGS
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: 7
+      author: zellster
+      changes:
+        - createTable:
+            tableName: ITEMS
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  startWith: 1
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: NAME
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DESCRIPTION
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: OBJECT_FILE
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: OBJECT_FILE_FORMAT
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: OBJECT_THUMBNAIL
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: OBJECT_VERSION
+                  type: float
+                  constraints:
+                    nullable: false
+              - column:
+                  name: BRAND_ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ARTIST_ID
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CREATED_AT
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: UPDATED_AT
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: POLYGONS_COUNT
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: VERTICES_COUNT
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ANIMATED
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: RIGGED
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: TEXTURES
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: MATERIALS
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: UV_MAPPING
+                  type: boolean
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 8
+      author: zellster
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS
+            baseColumnNames: BRAND_ID
+            referencedTableName: BRANDS
+            referencedColumnNames: ID
+            constraintName: ITEMS_BRANDS_FK
+        - addForeignKeyConstraint:
+            baseTableName: ITEMS
+            baseColumnNames: ARTIST_ID
+            referencedTableName: ARTISTS
+            referencedColumnNames: ID
+            constraintName: ITEMS_ARTISTS_FK
