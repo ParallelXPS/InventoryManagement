@@ -25,13 +25,15 @@ Each inventory item will have the following information:
 
 * Optional
 
-docker pull postgres:9.6.4-alpine
 docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres:9.6.4-alpine
-docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
 docker run -it --rm --link some-postgres:postgres postgres:9.6.4-alpine psql -h postgres -U postgres
   mysecretpassword
 
+docker run -p 3306:3306 --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:5.7
+docker run -it --link some-mysql:mysql --rm mysql:5.7 sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
+
 Sample JDBC urls:
 
+jdbc:h2:file:$buildDir/inventory_management
 jdbc:mysql://localhost:3306/inventory_management?nullNamePatternMatchesAll=true
 jdbc:postgresql://localhost:5432/inventory_management

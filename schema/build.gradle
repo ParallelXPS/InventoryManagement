@@ -1,11 +1,15 @@
 buildscript {
   ext {
-    changeLog = "$projectDir/src/main/db/changelog-master.yaml"
+    changeLogFile = "$projectDir/src/main/db/changelog-master.yaml"
+
+    h2Version = '1.4.196'
+    jooqVersion = '3.9.5'
   }
   repositories {
     mavenCentral()
   }
   dependencies {
+    classpath group: 'com.h2database', name: 'h2', version: h2Version
     classpath group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
     classpath group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
     classpath group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
@@ -13,8 +17,63 @@ buildscript {
 }
 
 plugins {
+  id 'java'
+
   id 'com.github.ben-manes.versions' version '0.15.0'
+  id 'nu.studer.jooq' version '2.0.7'
   id 'org.liquibase.gradle' version '1.2.4'
+}
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile group: 'org.jooq', name: 'jooq', version: jooqVersion
+  jooqRuntime group: 'com.h2database', name: 'h2', version: h2Version
+}
+
+jar.baseName = 'inventorySchema'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jooq {
+  version = jooqVersion
+  edition = 'OSS'
+  sample(sourceSets.main) {
+    jdbc {
+      driver = 'org.h2.Driver'
+      url = "jdbc:h2:file:$buildDir/inventory_management"
+      user = 'sa'
+      password = ''
+    }
+    generator {
+      name = 'org.jooq.util.DefaultGenerator'
+      database {
+        name = 'org.jooq.util.h2.H2Database'
+        inputSchema = 'PUBLIC'
+      }
+      target {
+        packageName = 'com.parallelxps.schema.inventory'
+      }
+    }
+  }
+}
+
+task h2 {
+  doLast {
+    liquibase {
+      activities {
+        main {
+          changeLogFile changeLogFile
+          url "jdbc:h2:file:$buildDir/inventory_management"
+          username 'sa'
+          password ''
+        }
+      }
+    }
+  }
 }
 
 task mysql {
@@ -24,7 +83,7 @@ task mysql {
     liquibase {
       activities {
         main {
-          changeLogFile changeLog
+          changeLogFile changeLogFile
           url url
           username username
           password password
@@ -41,7 +100,7 @@ task postgres {
     liquibase {
       activities {
         main {
-          changeLogFile changeLog
+          changeLogFile changeLogFile
           url url
           username username
           password password
