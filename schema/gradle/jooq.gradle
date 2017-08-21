@@ -1,0 +1,22 @@
+jooq {
+  version = versions.jooq
+  edition = 'OSS'
+  sample(sourceSets.main) {
+    jdbc {
+      driver = 'org.h2.Driver'
+      url = "jdbc:h2:file:$buildDir/inventory_management"
+      user = 'sa'
+      password = ''
+    }
+    generator {
+      name = 'org.jooq.util.DefaultGenerator'
+      database {
+        name = 'org.jooq.util.h2.H2Database'
+        inputSchema = 'PUBLIC'
+      }
+      target {
+        packageName = 'com.parallelxps.schema.inventory'
+      }
+    }
+  }
+}

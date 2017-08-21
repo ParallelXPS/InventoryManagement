@@ -1,18 +1,17 @@
 buildscript {
+  apply from: "$rootDir/gradle/dependencies.gradle"
+
   ext {
     changeLogFile = "$projectDir/src/main/db/changelog-master.yaml"
-
-    h2Version = '1.4.196'
-    jooqVersion = '3.9.5'
   }
   repositories {
     mavenCentral()
   }
   dependencies {
-    classpath group: 'com.h2database', name: 'h2', version: h2Version
-    classpath group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
-    classpath group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
-    classpath group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+    classpath libraries.h2
+    classpath libraries.mysql
+    classpath libraries.liquibase
+    classpath libraries.postgres
   }
 }
 
@@ -29,8 +28,8 @@ repositories {
 }
 
 dependencies {
-  compile group: 'org.jooq', name: 'jooq', version: jooqVersion
-  jooqRuntime group: 'com.h2database', name: 'h2', version: h2Version
+  compile libraries.jooq
+  jooqRuntime libraries.h2
 }
 
 jar.baseName = 'inventorySchema'
@@ -38,74 +37,30 @@ jar.baseName = 'inventorySchema'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-jooq {
-  version = jooqVersion
-  edition = 'OSS'
-  sample(sourceSets.main) {
-    jdbc {
-      driver = 'org.h2.Driver'
-      url = "jdbc:h2:file:$buildDir/inventory_management"
-      user = 'sa'
-      password = ''
-    }
-    generator {
-      name = 'org.jooq.util.DefaultGenerator'
-      database {
-        name = 'org.jooq.util.h2.H2Database'
-        inputSchema = 'PUBLIC'
-      }
-      target {
-        packageName = 'com.parallelxps.schema.inventory'
-      }
-    }
-  }
-}
+apply from: "$projectDir/gradle/jooq.gradle"
 
-task h2 {
-  doLast {
-    liquibase {
-      activities {
-        main {
-          changeLogFile changeLogFile
-          url "jdbc:h2:file:$buildDir/inventory_management"
-          username 'sa'
-          password ''
-        }
-      }
+liquibase {
+  activities {
+    h2 {
+      changeLogFile changeLogFile
+      url "jdbc:h2:file:$buildDir/inventory_management"
+      username 'sa'
+      password ''
+    }
+    mysql {
+      changeLogFile changeLogFile
+      url mysqlUrl
+      username mysqlUsername
+      password mysqlPassword
+    }
+    postgres {
+      changeLogFile changeLogFile
+      url pgUrl
+      username pgUsername
+      password pgPassword
     }
   }
+  runList = project.hasProperty('runList') ? project.ext.runList : 'h2'
 }
 
-task mysql {
-  doLast {
-    apply from: "creds/${name}.gradle"
-
-    liquibase {
-      activities {
-        main {
-          changeLogFile changeLogFile
-          url url
-          username username
-          password password
-        }
-      }
-    }
-  }
-}
-
-task postgres {
-  doLast {
-    apply from: "creds/${name}.gradle"
-
-    liquibase {
-      activities {
-        main {
-          changeLogFile changeLogFile
-          url url
-          username username
-          password password
-        }
-      }
-    }
-  }
-}
+generateSampleJooqSchemaSource.dependsOn update
