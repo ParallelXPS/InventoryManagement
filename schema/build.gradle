@@ -9,8 +9,8 @@ buildscript {
   }
   dependencies {
     classpath libraries.h2
-    classpath libraries.mysql
     classpath libraries.liquibase
+    classpath libraries.mysql
     classpath libraries.postgres
   }
 }
@@ -29,6 +29,7 @@ repositories {
 
 dependencies {
   compile libraries.jooq
+  compile libraries.jsr303
   jooqRuntime libraries.h2
 }
 

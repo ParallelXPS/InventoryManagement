@@ -13,6 +13,15 @@ jooq {
       database {
         name = 'org.jooq.util.h2.H2Database'
         inputSchema = 'PUBLIC'
+        excludes = 'DATABASECHANGELOG|DATABASECHANGELOGLOCK'
+      }
+      generate {
+        deprecated = false
+        records = false
+        pojos = true
+        pojosEqualsAndHashCode = true
+        validationAnnotations = true
+        fluentSetters = true
       }
       target {
         packageName = 'com.parallelxps.schema.inventory'

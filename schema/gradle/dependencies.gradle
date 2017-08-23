@@ -2,6 +2,7 @@ ext {
   versions = [
     h2: '1.4.196',
     jooq: '3.9.5',
+    jsr303: '2.0.0.Final',
     liquibase: '3.5.3',
     mysql: '6.0.6',
     postgres: '42.1.4'
@@ -10,6 +11,7 @@ ext {
   libraries = [
     h2: "com.h2database:h2:${versions.h2}",
     jooq: "org.jooq:jooq:${versions.jooq}",
+    jsr303: "javax.validation:validation-api:${versions.jsr303}",
     liquibase: "org.liquibase:liquibase-core:${versions.liquibase}",
     mysql: "mysql:mysql-connector-java:${versions.mysql}",
     postgres: "org.postgresql:postgresql:${versions.postgres}"
