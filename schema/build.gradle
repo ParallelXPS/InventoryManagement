@@ -47,21 +47,22 @@ liquibase {
       url "jdbc:h2:file:$buildDir/inventory_management"
       username 'sa'
       password ''
+      contexts project.hasProperty('contexts') ? project.ext.contexts : '!test'
     }
     mysql {
       changeLogFile changeLogFile
       url mysqlUrl
       username mysqlUsername
       password mysqlPassword
+      contexts project.hasProperty('contexts') ? project.ext.contexts : '!test'
     }
     postgres {
       changeLogFile changeLogFile
       url pgUrl
       username pgUsername
       password pgPassword
+      contexts project.hasProperty('contexts') ? project.ext.contexts : '!test'
     }
   }
   runList = project.hasProperty('runList') ? project.ext.runList : 'h2'
 }
-
-generateSampleJooqSchemaSource.dependsOn update
