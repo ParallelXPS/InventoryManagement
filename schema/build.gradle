@@ -38,6 +38,10 @@ jar.baseName = 'inventorySchema'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+compileJava {
+  options.compilerArgs << '-parameters'
+}
+
 apply from: "$projectDir/gradle/jooq.gradle"
 
 liquibase {
@@ -66,3 +70,5 @@ liquibase {
   }
   runList = project.hasProperty('runList') ? project.ext.runList : 'h2'
 }
+
+generateSampleJooqSchemaSource.dependsOn update

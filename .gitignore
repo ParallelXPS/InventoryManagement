@@ -4,3 +4,5 @@
 *.swp
 # Gradle build artifacts
 build/
+# IDEA artifacts
+.idea/
