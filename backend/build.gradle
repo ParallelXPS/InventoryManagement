@@ -1,11 +1,23 @@
-allprojects {
+plugins {
+  id 'com.github.ben-manes.versions' version '0.15.0'
+}
+
+subprojects {
   apply from: "$rootDir/gradle/dependencies.gradle"
 
   repositories {
     jcenter()
   }
-}
 
-subprojects {
+  apply plugin: 'java'
+  apply plugin: 'com.github.ben-manes.versions'
+
+  sourceCompatibility = 1.8
+  targetCompatibility = 1.8
+
+  compileJava {
+    options.compilerArgs << '-parameters'
+  }
+
   version = '1.0'
 }

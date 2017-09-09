@@ -42,3 +42,5 @@ Build instructions:
 
 ./gradlew :schema:clean
 ./gradlew :schema:build [-PrunList=mysql,postgres]
+
+./gradlew dependencyUpdates -Drevision=release

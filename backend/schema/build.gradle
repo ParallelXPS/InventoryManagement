@@ -11,9 +11,6 @@ buildscript {
 }
 
 plugins {
-  id 'java'
-
-  id 'com.github.ben-manes.versions' version '0.15.0'
   id 'nu.studer.jooq' version '2.0.7'
   id 'org.liquibase.gradle' version '1.2.4'
 }
@@ -26,13 +23,6 @@ dependencies {
 
 jar {
   baseName = 'inventorySchema'
-}
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-compileJava {
-  options.compilerArgs << '-parameters'
 }
 
 apply from: "$projectDir/gradle/jooq.gradle"
