@@ -40,5 +40,5 @@ jdbc:postgresql://localhost:5432/inventory_management
 
 Build instructions:
 
-gradle clean
-gradle jar [-PrunList=mysql,postgres]
+./gradlew :schema:clean
+./gradlew :schema:build [-PrunList=mysql,postgres]

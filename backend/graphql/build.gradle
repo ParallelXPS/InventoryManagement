@@ -1,0 +1,9 @@
+plugins {
+  id 'org.springframework.boot' version '1.5.6.RELEASE'
+}
+
+dependencies {
+  compile libraries.graphiql
+  compile libraries.graphql
+  compile project(':schema')
+}

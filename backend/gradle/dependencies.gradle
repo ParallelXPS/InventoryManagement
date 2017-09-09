@@ -1,5 +1,7 @@
 ext {
   versions = [
+    graphiql: '3.8.0',
+    graphql: '3.8.0',
     h2: '1.4.196',
     jooq: '3.9.5',
     jsr303: '2.0.0.Final',
@@ -9,6 +11,8 @@ ext {
   ]
 
   libraries = [
+    graphiql: "com.graphql-java:graphiql-spring-boot-starter:${versions.graphiql}",
+    graphql: "com.graphql-java:graphql-spring-boot-starter:${versions.graphql}",
     h2: "com.h2database:h2:${versions.h2}",
     jooq: "org.jooq:jooq:${versions.jooq}",
     jsr303: "javax.validation:validation-api:${versions.jsr303}",

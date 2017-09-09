@@ -2,9 +2,6 @@ buildscript {
   ext {
     changeLogFile = "$projectDir/src/main/db/changelog-master.yaml"
   }
-  repositories {
-    mavenCentral()
-  }
   dependencies {
     classpath libraries.h2
     classpath libraries.liquibase
@@ -29,7 +26,6 @@ dependencies {
 
 jar {
   baseName = 'inventorySchema'
-  version =  '0.1.0'
 }
 
 sourceCompatibility = 1.8
