@@ -1,6 +1,4 @@
 buildscript {
-  apply from: "$rootDir/gradle/dependencies.gradle"
-
   ext {
     changeLogFile = "$projectDir/src/main/db/changelog-master.yaml"
   }
@@ -21,10 +19,6 @@ plugins {
   id 'com.github.ben-manes.versions' version '0.15.0'
   id 'nu.studer.jooq' version '2.0.7'
   id 'org.liquibase.gradle' version '1.2.4'
-}
-
-repositories {
-  jcenter()
 }
 
 dependencies {
