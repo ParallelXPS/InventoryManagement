@@ -12,6 +12,7 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-web'
   compile libraries.graphiql
   compile libraries.graphql
+  compile libraries.graphqlTools
   compile project(':schema')
   testCompile 'junit:junit'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
