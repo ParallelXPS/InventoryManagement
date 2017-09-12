@@ -16,6 +16,7 @@ subprojects {
   targetCompatibility = 1.8
 
   compileJava {
+    options.compilerArgs << '-deprecation'
     options.compilerArgs << '-parameters'
   }
 
