@@ -1,8 +1,8 @@
 ext {
   versions = [
-    graphiql: '3.8.0',
-    graphql: '3.8.0',
-    graphqlTools: '4.1.0',
+    graphiql: '3.9.0',
+    graphql: '3.9.0',
+    graphqlTools: '4.1.1',
     h2: '1.4.196',
     inject: '1',
     jooq: '3.9.5',

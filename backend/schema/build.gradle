@@ -1,6 +1,6 @@
 buildscript {
   ext {
-    changeLogFile = "$projectDir/src/main/db/changelog-master.yaml"
+    changeLogFile = "$projectDir/src/main/resources/db/changelog/db.changelog-master.yaml"
   }
   dependencies {
     classpath libraries.h2
