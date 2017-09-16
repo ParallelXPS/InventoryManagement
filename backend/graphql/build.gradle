@@ -19,9 +19,3 @@ dependencies {
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   testCompile libraries.inject
 }
-
-test {
-  testLogging {
-    showStandardStreams = true
-  }
-}

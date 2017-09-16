@@ -45,3 +45,4 @@ Build instructions:
 ./gradlew graphql:bootRun
 
 ./gradlew dependencyUpdates -Drevision=release
+./gradlew jacocoTestReport [--debug]
