@@ -4,6 +4,7 @@ plugins {
 
 configurations {
   compile.exclude module: 'spring-boot-starter-tomcat'
+  compile.exclude module: 'tomcat-jdbc'
 }
 
 dependencies {
@@ -14,6 +15,8 @@ dependencies {
   compile libraries.graphiql
   compile libraries.graphql
   compile libraries.graphqlTools
+  compile libraries.hikari
+  compile libraries.postgres
   compile project(':schema')
   testCompile 'junit:junit'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
