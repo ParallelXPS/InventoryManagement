@@ -1,0 +1,7 @@
+liquibase as test
+h2 as test
+jooq configuration as bean
+  dialect from value, datasource
+jooq dialect as property
+
+AbstractTransactionalJUnit4SpringContextTests

@@ -17,5 +17,7 @@ dependencies {
   compile project(':schema')
   testCompile 'junit:junit'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
+  testCompile libraries.h2
   testCompile libraries.inject
+  testCompile libraries.liquibase
 }
