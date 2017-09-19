@@ -46,3 +46,9 @@ Build instructions:
 
 ./gradlew dependencyUpdates -Drevision=release
 ./gradlew jacocoTestReport [--debug]
+
+export SPRING_DATASOURCE_PASSWORD=...
+export SPRING_DATASOURCE_URL='jdbc:postgresql://...:5432/inventory_management?ssl=true&sslmode=verify-full&sslrootcert=...'
+export SPRING_DATASOURCE_USERNAME=...
+
+java -Djavax.net.ssl.trustStore=/tmp/cacerts -Djavax.net.ssl.trustStorePassword=changeit -jar build/libs/graphql-0.1.0.jar
