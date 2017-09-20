@@ -21,13 +21,13 @@ import javax.sql.DataSource;
 import static com.parallelxps.graphql.inventory.data.sql.JooqConfiguration.JooqConfiguration;
 
 @ContextConfiguration
-public class QueryResolverTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class QueryTest extends AbstractTransactionalJUnit4SpringContextTests {
   @Inject
-  private QueryResolver resolver;
+  private Query query;
 
   @Test
   public void foo() {
-    System.out.println("AWZ >>>>> " + resolver.category("1"));
+    System.out.println("AWZ >>>>> " + query.category("1"));
   }
 
   @Configuration
@@ -51,8 +51,8 @@ public class QueryResolverTest extends AbstractTransactionalJUnit4SpringContextT
     }
 
     @Bean
-    public QueryResolver queryResolver(DSLContext create) {
-      return new QueryResolver(create);
+    public Query query(DSLContext create) {
+      return new Query(create);
     }
 
     @Bean
