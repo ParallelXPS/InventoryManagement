@@ -1,7 +1,7 @@
 ext {
   versions = [
-    graphiql: '3.9.1',
-    graphql: '3.9.1',
+    graphiql: '3.9.2',
+    graphql: '3.9.2',
     graphqlTools: '4.1.1',
     h2: '1.4.196',
     hikari: '2.7.1',

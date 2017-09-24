@@ -27,7 +27,7 @@ public class QueryTest extends AbstractTransactionalJUnit4SpringContextTests {
 
   @Test
   public void foo() {
-    System.out.println("AWZ >>>>> " + query.category("1", null));
+    System.out.println("AWZ >>>>> " + query.category("1"));
   }
 
   @Configuration

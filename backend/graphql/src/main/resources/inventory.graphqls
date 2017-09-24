@@ -1,7 +1,12 @@
 type Query {
   category(id: ID!): Category
+  keyword(id: ID!): Keyword
 }
 
 type Category {
+  id: ID!
+}
+
+type Keyword {
   id: ID!
 }
