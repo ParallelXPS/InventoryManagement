@@ -1,10 +1,20 @@
 type Query {
+  artist(id: ID!): Artist
   brand(id: ID!): Brand
   category(id: ID!): Category
+  geometry(id: ID!): Geometry
   keyword(id: ID!): Keyword
 }
 
+type Artist {
+  id: ID!
+}
+
 type Brand {
+  id: ID!
+}
+
+type Geometry {
   id: ID!
 }
 

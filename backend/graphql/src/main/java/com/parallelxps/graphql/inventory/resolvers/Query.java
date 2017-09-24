@@ -1,16 +1,12 @@
 package com.parallelxps.graphql.inventory.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.parallelxps.schema.inventory.tables.pojos.Brands;
-import com.parallelxps.schema.inventory.tables.pojos.Categories;
-import com.parallelxps.schema.inventory.tables.pojos.Keywords;
+import com.parallelxps.schema.inventory.tables.pojos.*;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.parallelxps.schema.inventory.Tables.BRANDS;
-import static com.parallelxps.schema.inventory.Tables.CATEGORIES;
-import static com.parallelxps.schema.inventory.Tables.KEYWORDS;
+import static com.parallelxps.schema.inventory.Tables.*;
 
 @Component
 @Transactional(readOnly = true)
@@ -19,6 +15,18 @@ public class Query implements GraphQLQueryResolver {
 
   public Query(DSLContext create) {
     this.create = create;
+  }
+
+  static Integer pk(String id) {
+    return Integer.valueOf(id);
+  }
+
+  public Artists artist(String id) {
+    return create.selectFrom(ARTISTS)
+        .where(ARTISTS.ID.eq(pk(id)))
+        .fetchOptional()
+        .map(r -> r.into(Artists.class))
+        .orElse(null);
   }
 
   public Brands brand(String id) {
@@ -37,15 +45,19 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  public Geometries geometry(String id) {
+    return create.selectFrom(GEOMETRIES)
+        .where(GEOMETRIES.ID.eq(pk(id)))
+        .fetchOptional()
+        .map(r -> r.into(Geometries.class))
+        .orElse(null);
+  }
+
   public Keywords keyword(String id) {
     return create.selectFrom(KEYWORDS)
         .where(KEYWORDS.ID.eq(pk(id)))
         .fetchOptional()
         .map(r -> r.into(Keywords.class))
         .orElse(null);
-  }
-
-  static Integer pk(String id) {
-    return Integer.valueOf(id);
   }
 }
