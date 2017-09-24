@@ -3,7 +3,9 @@ type Query {
   brand(id: ID!): Brand
   category(id: ID!): Category
   geometry(id: ID!): Geometry
+  item(id: ID!): Item
   keyword(id: ID!): Keyword
+  mapping(id: ID!): Mapping
 }
 
 type Artist {
@@ -14,14 +16,22 @@ type Brand {
   id: ID!
 }
 
-type Geometry {
-  id: ID!
-}
-
 type Category {
   id: ID!
 }
 
+type Geometry {
+  id: ID!
+}
+
+type Item {
+  id: ID!
+}
+
 type Keyword {
+  id: ID!
+}
+
+type Mapping {
   id: ID!
 }

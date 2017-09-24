@@ -53,11 +53,27 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  public Items item(String id) {
+    return create.selectFrom(ITEMS)
+        .where(ITEMS.ID.eq(pk(id)))
+        .fetchOptional()
+        .map(r -> r.into(Items.class))
+        .orElse(null);
+  }
+
   public Keywords keyword(String id) {
     return create.selectFrom(KEYWORDS)
         .where(KEYWORDS.ID.eq(pk(id)))
         .fetchOptional()
         .map(r -> r.into(Keywords.class))
+        .orElse(null);
+  }
+
+  public Mappings mapping(String id) {
+    return create.selectFrom(MAPPINGS)
+        .where(MAPPINGS.ID.eq(pk(id)))
+        .fetchOptional()
+        .map(r -> r.into(Mappings.class))
         .orElse(null);
   }
 }
