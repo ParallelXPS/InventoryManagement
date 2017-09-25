@@ -45,6 +45,7 @@ type Item {
   uvMapping: Boolean!
   geometry: Geometry
   mapping: Mapping
+  categories: [Category!]!
 }
 
 type Keyword {

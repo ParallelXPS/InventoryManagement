@@ -6,6 +6,8 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static com.parallelxps.schema.inventory.Tables.*;
 
 @Component
@@ -31,6 +33,10 @@ public class ItemResolver implements GraphQLResolver<Items> {
         .fetchOptional()
         .map(r -> r.into(Brands.class))
         .orElse(null);
+  }
+
+  public List<Categories> categories(Items item) {
+    return java.util.Collections.emptyList();
   }
 
   public Geometries geometry(Items item) {
