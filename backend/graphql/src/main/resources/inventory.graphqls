@@ -26,6 +26,25 @@ type Geometry {
 
 type Item {
   id: ID!
+  name: String!
+  description: String!
+  objectFile: String!
+  objectFileFormat: String!
+  objectThumbnail: String!
+  objectVersion: Float!
+  brand: Brand!
+  artist: Artist!
+  createdAt: Long!
+  updatedAt: Long!
+  polygonsCount: Int!
+  verticesCount: Int!
+  animated: Boolean!
+  rigged: Boolean!
+  textures: Boolean!
+  materials: Boolean!
+  uvMapping: Boolean!
+  geometry: Geometry
+  mapping: Mapping
 }
 
 type Keyword {

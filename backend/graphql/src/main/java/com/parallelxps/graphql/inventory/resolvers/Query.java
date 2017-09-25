@@ -2,6 +2,7 @@ package com.parallelxps.graphql.inventory.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.parallelxps.schema.inventory.tables.pojos.*;
+import graphql.schema.DataFetchingEnvironment;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,7 +54,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
-  public Items item(String id) {
+  public Items item(String id, DataFetchingEnvironment env) {
     return create.selectFrom(ITEMS)
         .where(ITEMS.ID.eq(pk(id)))
         .fetchOptional()
