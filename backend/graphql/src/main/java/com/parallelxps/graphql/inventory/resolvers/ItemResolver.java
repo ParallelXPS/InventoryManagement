@@ -22,16 +22,14 @@ public class ItemResolver implements GraphQLResolver<Items> {
   public Artists artist(Items item) {
     return create.selectFrom(ARTISTS)
         .where(ARTISTS.ID.eq(item.getArtistId()))
-        .fetchOptional()
-        .map(r -> r.into(Artists.class))
+        .fetchOptionalInto(Artists.class)
         .orElse(null);
   }
 
   public Brands brand(Items item) {
     return create.selectFrom(BRANDS)
         .where(BRANDS.ID.eq(item.getBrandId()))
-        .fetchOptional()
-        .map(r -> r.into(Brands.class))
+        .fetchOptionalInto(Brands.class)
         .orElse(null);
   }
 
@@ -42,16 +40,14 @@ public class ItemResolver implements GraphQLResolver<Items> {
   public Geometries geometry(Items item) {
     return create.selectFrom(GEOMETRIES)
         .where(GEOMETRIES.ID.eq(item.getGeometryId()))
-        .fetchOptional()
-        .map(r -> r.into(Geometries.class))
+        .fetchOptionalInto(Geometries.class)
         .orElse(null);
   }
 
   public Mappings mapping(Items item) {
     return create.selectFrom(MAPPINGS)
         .where(MAPPINGS.ID.eq(item.getMappingId()))
-        .fetchOptional()
-        .map(r -> r.into(Mappings.class))
+        .fetchOptionalInto(Mappings.class)
         .orElse(null);
   }
 }
