@@ -46,6 +46,7 @@ type Item {
   geometry: Geometry
   mapping: Mapping
   categories: [Category!]!
+  keywords: [Keyword!]!
 }
 
 type Keyword {

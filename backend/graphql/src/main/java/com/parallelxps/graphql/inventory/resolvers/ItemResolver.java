@@ -34,7 +34,12 @@ public class ItemResolver implements GraphQLResolver<Items> {
   }
 
   public List<Categories> categories(Items item) {
-    return java.util.Collections.emptyList();
+    return create.select(CATEGORIES.fields())
+        .from(CATEGORIES)
+        .join(ITEMS_CATEGORIES).onKey()
+        .where(ITEMS_CATEGORIES.ITEM_ID.eq(item.getId()))
+        .fetch()
+        .into(Categories.class);
   }
 
   public Geometries geometry(Items item) {
@@ -42,6 +47,15 @@ public class ItemResolver implements GraphQLResolver<Items> {
         .where(GEOMETRIES.ID.eq(item.getGeometryId()))
         .fetchOptionalInto(Geometries.class)
         .orElse(null);
+  }
+
+  public List<Keywords> keywords(Items item) {
+    return create.select(KEYWORDS.fields())
+        .from(KEYWORDS)
+        .join(ITEMS_KEYWORDS).onKey()
+        .where(ITEMS_KEYWORDS.ITEM_ID.eq(item.getId()))
+        .fetch()
+        .into(Keywords.class);
   }
 
   public Mappings mapping(Items item) {
