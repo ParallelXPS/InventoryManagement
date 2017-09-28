@@ -1,12 +1,14 @@
 ext {
   versions = [
+    commonsLang3: '3.6',
     graphiql: '3.9.2',
     graphql: '3.9.2',
     graphqlTools: '4.1.2',
+    guava: '23.1-jre',
     h2: '1.4.196',
     hikari: '2.7.1',
     inject: '1',
-    jooq: '3.9.5',
+    jooq: '3.9.6',
     jsr303: '2.0.0.Final',
     liquibase: '3.5.3',
     mysql: '6.0.6',
@@ -14,9 +16,11 @@ ext {
   ]
 
   libraries = [
+    commonsLang3: "org.apache.commons:commons-lang3:${versions.commonsLang3}",
     graphiql: "com.graphql-java:graphiql-spring-boot-starter:${versions.graphiql}",
     graphql: "com.graphql-java:graphql-spring-boot-starter:${versions.graphql}",
     graphqlTools: "com.graphql-java:graphql-java-tools:${versions.graphqlTools}",
+    guava: "com.google.guava:guava:${versions.guava}",
     h2: "com.h2database:h2:${versions.h2}",
     hikari: "com.zaxxer:HikariCP:${versions.hikari}",
     inject: "javax.inject:javax.inject:${versions.inject}",

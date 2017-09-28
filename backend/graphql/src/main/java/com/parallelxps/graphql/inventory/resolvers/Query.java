@@ -1,6 +1,7 @@
 package com.parallelxps.graphql.inventory.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.parallelxps.graphql.inventory.data.fields.FieldMapper;
 import com.parallelxps.schema.inventory.tables.pojos.*;
 import graphql.schema.DataFetchingEnvironment;
 import org.jooq.DSLContext;
@@ -51,7 +52,8 @@ public class Query implements GraphQLQueryResolver {
   }
 
   public Items item(String id, DataFetchingEnvironment env) {
-    return create.selectFrom(ITEMS)
+    return create.select(FieldMapper.Items.fields(env))
+        .from(ITEMS)
         .where(ITEMS.ID.eq(pk(id)))
         .fetchOptionalInto(Items.class)
         .orElse(null);

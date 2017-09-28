@@ -12,9 +12,11 @@ dependencies {
   compile 'org.springframework.boot:spring-boot-starter-jdbc'
   compile 'org.springframework.boot:spring-boot-starter-jetty'
   compile 'org.springframework.boot:spring-boot-starter-web'
+  compile libraries.commonsLang3
   compile libraries.graphiql
   compile libraries.graphql
   compile libraries.graphqlTools
+  compile libraries.guava
   compile libraries.hikari
   compile libraries.postgres
   compile project(':schema')
