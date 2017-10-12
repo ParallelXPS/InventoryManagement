@@ -16,6 +16,7 @@ dependencies {
   compile libraries.graphqlTools
   compile libraries.guava
   compile libraries.hikari
+  compile libraries.jooq
   compile libraries.postgres
   compile project(':schema')
   testCompile 'junit:junit'
