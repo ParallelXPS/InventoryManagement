@@ -16,6 +16,7 @@ import static com.google.common.base.CaseFormat.LOWER_CAMEL;
 import static com.google.common.base.CaseFormat.UPPER_UNDERSCORE;
 import static com.parallelxps.schema.inventory.Tables.ITEMS;
 
+@SuppressWarnings("ImmutableEnumChecker")
 public enum FieldMapper {
   Items(ITEMS);
 

@@ -1,5 +1,6 @@
 plugins {
   id 'com.github.ben-manes.versions' version '0.15.0'
+  id 'net.ltgt.errorprone' version '0.0.13'
 }
 
 subprojects {
@@ -12,6 +13,7 @@ subprojects {
   apply plugin: 'java'
   apply plugin: 'jacoco'
   apply plugin: 'com.github.ben-manes.versions'
+  apply plugin: 'net.ltgt.errorprone'
 
   sourceCompatibility = 1.8
   targetCompatibility = 1.8
