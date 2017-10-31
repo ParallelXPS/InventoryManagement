@@ -8,6 +8,8 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Nullable;
+
 import static com.parallelxps.schema.inventory.Tables.*;
 
 @Component
@@ -23,6 +25,7 @@ public class Query implements GraphQLQueryResolver {
     return Integer.valueOf(id);
   }
 
+  @Nullable
   public Artists artist(String id) {
     return create.selectFrom(ARTISTS)
         .where(ARTISTS.ID.eq(pk(id)))
@@ -30,6 +33,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  @Nullable
   public Brands brand(String id) {
     return create.selectFrom(BRANDS)
         .where(BRANDS.ID.eq(pk(id)))
@@ -37,6 +41,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  @Nullable
   public Categories category(String id) {
     return create.selectFrom(CATEGORIES)
         .where(CATEGORIES.ID.eq(pk(id)))
@@ -44,6 +49,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  @Nullable
   public Geometries geometry(String id) {
     return create.selectFrom(GEOMETRIES)
         .where(GEOMETRIES.ID.eq(pk(id)))
@@ -51,6 +57,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  @Nullable
   public Items item(String id, DataFetchingEnvironment env) {
     return create.select(FieldMapper.Items.fields(env))
         .from(ITEMS)
@@ -59,6 +66,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  @Nullable
   public Keywords keyword(String id) {
     return create.selectFrom(KEYWORDS)
         .where(KEYWORDS.ID.eq(pk(id)))
@@ -66,6 +74,7 @@ public class Query implements GraphQLQueryResolver {
         .orElse(null);
   }
 
+  @Nullable
   public Mappings mapping(String id) {
     return create.selectFrom(MAPPINGS)
         .where(MAPPINGS.ID.eq(pk(id)))

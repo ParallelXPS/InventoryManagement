@@ -4,14 +4,16 @@ ext {
     graphiql: '3.9.2',
     graphql: '3.9.2',
     graphqlTools: '4.1.2',
-    guava: '23.2-jre',
+    guava: '23.3-jre',
     h2: '1.4.196',
     hikari: '2.7.2',
     inject: '1',
     jooq: '3.10.1',
     jsr303: '2.0.0.Final',
+    jsr305: '3.0.2',
     liquibase: '3.5.3',
     mysql: '6.0.6',
+    nullaway: '0.1.7',
     postgres: '42.1.4'
   ]
 
@@ -26,8 +28,10 @@ ext {
     inject: "javax.inject:javax.inject:${versions.inject}",
     jooq: "org.jooq:jooq:${versions.jooq}",
     jsr303: "javax.validation:validation-api:${versions.jsr303}",
+    jsr305: "com.google.code.findbugs:jsr305:${versions.jsr305}",
     liquibase: "org.liquibase:liquibase-core:${versions.liquibase}",
     mysql: "mysql:mysql-connector-java:${versions.mysql}",
+    nullaway: "com.uber.nullaway:nullaway:${versions.nullaway}",
     postgres: "org.postgresql:postgresql:${versions.postgres}"
   ]
 }

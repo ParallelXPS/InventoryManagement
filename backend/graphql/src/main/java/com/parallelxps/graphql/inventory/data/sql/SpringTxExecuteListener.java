@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.SQLStateSQLExceptionTranslator;
 
 import java.sql.SQLException;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class SpringTxExecuteListener extends DefaultExecuteListener {
   /**
@@ -23,7 +24,7 @@ public class SpringTxExecuteListener extends DefaultExecuteListener {
         .ifPresent(t -> ctx.exception(t.translate("jOOQ", ctx.sql(), opt.get())));
   }
 
-  SQLExceptionTranslator translator(SQLDialect dialect) {
+  SQLExceptionTranslator translator(@Nullable SQLDialect dialect) {
     return Optional.ofNullable(dialect)
         .map(o -> o.thirdParty().springDbName())
         .map(name -> (SQLExceptionTranslator) new SQLErrorCodeSQLExceptionTranslator(name))

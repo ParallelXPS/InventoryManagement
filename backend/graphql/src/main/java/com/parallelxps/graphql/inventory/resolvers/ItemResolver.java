@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import javax.annotation.Nullable;
 
 import static com.parallelxps.schema.inventory.Tables.*;
 
@@ -19,6 +20,7 @@ public class ItemResolver implements GraphQLResolver<Items> {
     this.create = create;
   }
 
+  @Nullable
   public Artists artist(Items item) {
     return create.selectFrom(ARTISTS)
         .where(ARTISTS.ID.eq(item.getArtistId()))
@@ -26,6 +28,7 @@ public class ItemResolver implements GraphQLResolver<Items> {
         .orElse(null);
   }
 
+  @Nullable
   public Brands brand(Items item) {
     return create.selectFrom(BRANDS)
         .where(BRANDS.ID.eq(item.getBrandId()))
@@ -42,6 +45,7 @@ public class ItemResolver implements GraphQLResolver<Items> {
         .into(Categories.class);
   }
 
+  @Nullable
   public Geometries geometry(Items item) {
     return create.selectFrom(GEOMETRIES)
         .where(GEOMETRIES.ID.eq(item.getGeometryId()))
@@ -58,6 +62,7 @@ public class ItemResolver implements GraphQLResolver<Items> {
         .into(Keywords.class);
   }
 
+  @Nullable
   public Mappings mapping(Items item) {
     return create.selectFrom(MAPPINGS)
         .where(MAPPINGS.ID.eq(item.getMappingId()))
