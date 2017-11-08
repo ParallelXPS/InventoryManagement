@@ -1,6 +1,6 @@
 ext {
   versions = [
-    commonsLang3: '3.6',
+    commonsLang3: '3.7',
     graphiql: '3.9.2',
     graphql: '3.9.2',
     graphqlTools: '4.1.2',
