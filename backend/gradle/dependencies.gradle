@@ -14,7 +14,7 @@ ext {
     liquibase: '3.5.3',
     mysql: '6.0.6',
     nullaway: '0.3.2',
-    postgres: '42.2.0'
+    postgres: '42.2.1'
   ]
 
   libraries = [
