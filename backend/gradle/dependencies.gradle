@@ -4,16 +4,16 @@ ext {
     graphiql: '3.10.0',
     graphql: '3.10.0',
     graphqlTools: '4.3.0',
-    guava: '23.6-jre',
+    guava: '24.0-jre',
     h2: '1.4.196',
-    hikari: '2.7.6',
+    hikari: '2.7.7',
     inject: '1',
-    jooq: '3.10.4',
+    jooq: '3.10.5',
     jsr303: '2.0.1.Final',
     jsr305: '3.0.2',
-    liquibase: '3.5.3',
+    liquibase: '3.5.4',
     mysql: '6.0.6',
-    nullaway: '0.3.2',
+    nullaway: '0.3.3',
     postgres: '42.2.1'
   ]
 
