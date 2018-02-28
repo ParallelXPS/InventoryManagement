@@ -32,5 +32,10 @@ subprojects {
     compileOnly libraries.jsr305
   }
 
+  tasks.withType(AbstractArchiveTask) {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+  }
+
   version = '0.1.0'
 }
