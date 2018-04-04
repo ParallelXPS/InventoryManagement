@@ -1,20 +1,19 @@
 ext {
   versions = [
     commonsLang3: '3.7',
-    graphiql: '3.10.0',
-    graphql: '3.10.0',
+    graphiql: '4.0.0',
+    graphql: '4.0.0',
     graphqlTools: '4.3.0',
-    guava: '24.0-jre',
-    h2: '1.4.196',
-    hikari: '2.7.8',
+    guava: '24.1-jre',
+    h2: '1.4.197',
     inject: '1',
-    jooq: '3.10.5',
+    jooq: '3.10.6',
     jsr303: '2.0.1.Final',
     jsr305: '3.0.2',
     liquibase: '3.5.5',
     mysql: '6.0.6',
-    nullaway: '0.3.5',
-    postgres: '42.2.1'
+    nullaway: '0.4.1',
+    postgres: '42.2.2'
   ]
 
   libraries = [
@@ -24,7 +23,6 @@ ext {
     graphqlTools: "com.graphql-java:graphql-java-tools:${versions.graphqlTools}",
     guava: "com.google.guava:guava:${versions.guava}",
     h2: "com.h2database:h2:${versions.h2}",
-    hikari: "com.zaxxer:HikariCP:${versions.hikari}",
     inject: "javax.inject:javax.inject:${versions.inject}",
     jooq: "org.jooq:jooq:${versions.jooq}",
     jsr303: "javax.validation:validation-api:${versions.jsr303}",

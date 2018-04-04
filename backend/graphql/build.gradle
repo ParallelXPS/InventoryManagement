@@ -1,10 +1,8 @@
 plugins {
-  id 'org.springframework.boot' version '1.5.10.RELEASE'
+  id 'org.springframework.boot' version '2.0.0.RELEASE'
 }
 
-configurations {
-  compile.exclude module: 'tomcat-jdbc'
-}
+apply plugin: 'io.spring.dependency-management'
 
 dependencies {
   compile 'org.springframework.boot:spring-boot-starter-actuator'
@@ -15,7 +13,6 @@ dependencies {
   compile libraries.graphql
   compile libraries.graphqlTools
   compile libraries.guava
-  compile libraries.hikari
   compile libraries.jooq
   compile libraries.postgres
   compile project(':schema')
