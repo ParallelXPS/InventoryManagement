@@ -12,7 +12,6 @@ ext {
     jsr305: '3.0.2',
     liquibase: '3.5.5',
     mysql: '6.0.6',
-    nullaway: '0.4.1',
     postgres: '42.2.2'
   ]
 
@@ -29,7 +28,6 @@ ext {
     jsr305: "com.google.code.findbugs:jsr305:${versions.jsr305}",
     liquibase: "org.liquibase:liquibase-core:${versions.liquibase}",
     mysql: "mysql:mysql-connector-java:${versions.mysql}",
-    nullaway: "com.uber.nullaway:nullaway:${versions.nullaway}",
     postgres: "org.postgresql:postgresql:${versions.postgres}"
   ]
 }
