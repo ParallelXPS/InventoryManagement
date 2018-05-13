@@ -5,6 +5,7 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
   compile 'org.springframework.boot:spring-boot-starter-actuator'
   compile 'org.springframework.boot:spring-boot-starter-jdbc'
   compile 'org.springframework.boot:spring-boot-starter-web'
@@ -16,6 +17,7 @@ dependencies {
   compile libraries.jooq
   compile libraries.postgres
   compile project(':schema')
+  testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
   testCompile 'junit:junit'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   testCompile libraries.h2
