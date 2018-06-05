@@ -55,3 +55,9 @@ liquibase {
 }
 
 generateSampleJooqSchemaSource.dependsOn update
+
+tasks.generateSampleJooqSchemaSource.with {
+  javaExecSpec = { JavaExecSpec s ->
+    s.jvmArgs '--add-modules', 'java.xml.bind'
+  }
+}
