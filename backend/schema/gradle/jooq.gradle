@@ -9,9 +9,9 @@ jooq {
       password = ''
     }
     generator {
-      name = 'org.jooq.util.DefaultGenerator'
+      name = 'org.jooq.codegen.DefaultGenerator'
       database {
-        name = 'org.jooq.util.h2.H2Database'
+        name = 'org.jooq.meta.h2.H2Database'
         inputSchema = 'PUBLIC'
         excludes = 'DATABASECHANGELOG|DATABASECHANGELOGLOCK'
       }

@@ -11,14 +11,16 @@ buildscript {
 }
 
 plugins {
-  id 'nu.studer.jooq' version '2.0.11'
-  id 'org.liquibase.gradle' version '1.2.4'
+  id 'nu.studer.jooq' version '3.0.1'
+  id 'org.liquibase.gradle' version '2.0.0'
 }
 
 dependencies {
   compile libraries.jooq
   compile libraries.jsr303
   jooqRuntime libraries.h2
+  liquibaseRuntime libraries.h2
+  liquibaseRuntime libraries.liquibase
 }
 
 jar {

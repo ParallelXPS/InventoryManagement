@@ -1,18 +1,18 @@
 ext {
   versions = [
     commonsLang3: '3.7',
-    graphiql: '4.2.0',
-    graphql: '4.2.0',
-    graphqlTools: '5.1.0',
+    graphiql: '4.4.0',
+    graphql: '4.4.0',
+    graphqlTools: '5.2.0',
     guava: '25.1-jre',
     h2: '1.4.197',
     inject: '1',
-    jooq: '3.10.7',
+    jooq: '3.11.3',
     jsr303: '2.0.1.Final',
     jsr305: '3.0.2',
-    liquibase: '3.5.5',
+    liquibase: '3.6.2',
     mysql: '8.0.11',
-    postgres: '42.2.2'
+    postgres: '42.2.4'
   ]
 
   libraries = [
