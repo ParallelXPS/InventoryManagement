@@ -29,7 +29,7 @@ subprojects {
     toolVersion = '0.8.1'
   }
 
-  tasks.withType(AbstractArchiveTask) {
+  tasks.withType(AbstractArchiveTask).configureEach {
     preserveFileTimestamps = false
     reproducibleFileOrder = true
   }
