@@ -57,7 +57,7 @@ public class QueryTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Bean
     public SpringLiquibase springLiquibase(DataSource dataSource) {
-      SpringLiquibase bean = new SpringLiquibase();
+      var bean = new SpringLiquibase();
 
       bean.setChangeLog("classpath:db/changelog/db.changelog-master.yaml");
       bean.setDataSource(dataSource);

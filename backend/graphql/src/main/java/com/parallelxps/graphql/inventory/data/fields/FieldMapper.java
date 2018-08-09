@@ -35,7 +35,7 @@ public enum FieldMapper {
   }
 
   private String normalize(Field<?> field) {
-    String name = StringUtils.removeEnd(field.getName(), "_ID");
+    var name = StringUtils.removeEnd(field.getName(), "_ID");
 
     return UPPER_UNDERSCORE.to(LOWER_CAMEL, name);
   }

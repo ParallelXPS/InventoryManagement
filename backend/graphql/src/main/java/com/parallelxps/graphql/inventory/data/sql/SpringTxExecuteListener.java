@@ -7,7 +7,6 @@ import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 import org.springframework.jdbc.support.SQLExceptionTranslator;
 import org.springframework.jdbc.support.SQLStateSQLExceptionTranslator;
 
-import java.sql.SQLException;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -17,7 +16,7 @@ public class SpringTxExecuteListener extends DefaultExecuteListener {
    */
   @Override
   public void exception(ExecuteContext ctx) {
-    Optional<SQLException> opt = Optional.ofNullable(ctx.sqlException());
+    var opt = Optional.ofNullable(ctx.sqlException());
 
     opt.map(e -> ctx.dialect())
         .map(this::translator)

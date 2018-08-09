@@ -29,7 +29,7 @@ public class SpringTxExecuteListenerTest {
 
   @Test
   public void shouldHandleNullSQLException() {
-    ExecuteContext ctx = mock(ExecuteContext.class);
+    var ctx = mock(ExecuteContext.class);
 
     listener().exception(ctx);
 
@@ -38,7 +38,7 @@ public class SpringTxExecuteListenerTest {
 
   @Test
   public void shouldHandleNonNullSQLException() {
-    ExecuteContext ctx = mock(ExecuteContext.class);
+    var ctx = mock(ExecuteContext.class);
 
     when(ctx.dialect()).thenReturn(SQLDialect.H2);
     when(ctx.sqlException()).thenReturn(new SQLException());
