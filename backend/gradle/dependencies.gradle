@@ -3,7 +3,7 @@ ext {
     commonsLang3: '3.8',
     graphiql: '5.0.2',
     graphql: '5.0.2',
-    graphqlTools: '5.2.3',
+    graphqlTools: '5.2.4',
     guava: '26.0-jre',
     h2: '1.4.197',
     inject: '1',
