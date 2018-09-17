@@ -40,9 +40,10 @@ jdbc:postgresql://localhost:5432/inventory_management
 
 Build instructions:
 
+./gradlew resolveDependencies
 ./gradlew schema:clean
 ./gradlew schema:build [-PrunList=mysql,postgres]
-./gradlew graphql:bootRun
+./gradlew [--offline] graphql:bootRun
 
 ./gradlew dependencyUpdates -Drevision=release
 ./gradlew jacocoTestReport [--debug]

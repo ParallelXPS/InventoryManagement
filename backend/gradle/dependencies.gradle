@@ -7,7 +7,7 @@ ext {
     guava: '26.0-jre',
     h2: '1.4.197',
     inject: '1',
-    jooq: '3.11.4',
+    jooq: '3.11.5',
     jsr303: '2.0.1.Final',
     jsr305: '3.0.2',
     liquibase: '3.6.2',

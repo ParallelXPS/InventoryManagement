@@ -4,6 +4,7 @@ plugins {
 
 subprojects {
   apply from: "$rootDir/gradle/dependencies.gradle"
+  apply from: "$rootDir/gradle/resolveDependencies.gradle"
 
   repositories {
     jcenter()
