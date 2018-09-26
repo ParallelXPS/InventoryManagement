@@ -10,3 +10,5 @@ out/
 *.iml
 # Infer artifacts
 infer-out/
+# Mac artifacts
+.DS_Store

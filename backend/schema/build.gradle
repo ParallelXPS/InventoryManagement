@@ -3,7 +3,10 @@ buildscript {
     changeLogFile = "$projectDir/src/main/resources/db/changelog/db.changelog-master.yaml"
   }
   dependencies {
+    classpath libraries.activation
     classpath libraries.h2
+    classpath libraries.jaxbCore
+    classpath libraries.jaxbImpl
     classpath libraries.liquibase
     classpath libraries.mysql
     classpath libraries.postgres
@@ -18,7 +21,10 @@ plugins {
 dependencies {
   compile libraries.jooq
   compile libraries.jsr303
+  jooqRuntime libraries.activation
   jooqRuntime libraries.h2
+  jooqRuntime libraries.jaxbCore
+  jooqRuntime libraries.jaxbImpl
   liquibaseRuntime libraries.h2
   liquibaseRuntime libraries.liquibase
 }
@@ -57,9 +63,3 @@ liquibase {
 }
 
 generateSampleJooqSchemaSource.dependsOn update
-
-tasks.generateSampleJooqSchemaSource.with {
-  javaExecSpec = { JavaExecSpec s ->
-    s.jvmArgs '--add-modules', 'java.xml.bind'
-  }
-}

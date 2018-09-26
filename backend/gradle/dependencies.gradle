@@ -1,12 +1,15 @@
 ext {
   versions = [
-    commonsLang3: '3.8',
+    activation: '1.1.1',
+    byteBuddy: '1.8.22',
+    commonsLang3: '3.8.1',
     graphiql: '5.0.2',
     graphql: '5.0.2',
     graphqlTools: '5.2.4',
     guava: '26.0-jre',
     h2: '1.4.197',
     inject: '1',
+    jaxb: '2.3.0',
     jooq: '3.11.5',
     jsr303: '2.0.1.Final',
     jsr305: '3.0.2',
@@ -16,6 +19,8 @@ ext {
   ]
 
   libraries = [
+    activation: "javax.activation:activation:${versions.activation}",
+    byteBuddy: "net.bytebuddy:byte-buddy:${versions.byteBuddy}",
     commonsLang3: "org.apache.commons:commons-lang3:${versions.commonsLang3}",
     graphiql: "com.graphql-java:graphiql-spring-boot-starter:${versions.graphiql}",
     graphql: "com.graphql-java:graphql-spring-boot-starter:${versions.graphql}",
@@ -23,6 +28,8 @@ ext {
     guava: "com.google.guava:guava:${versions.guava}",
     h2: "com.h2database:h2:${versions.h2}",
     inject: "javax.inject:javax.inject:${versions.inject}",
+    jaxbCore: "com.sun.xml.bind:jaxb-core:${versions.jaxb}",
+    jaxbImpl: "com.sun.xml.bind:jaxb-impl:${versions.jaxb}",
     jooq: "org.jooq:jooq:${versions.jooq}",
     jsr303: "javax.validation:validation-api:${versions.jsr303}",
     jsr305: "com.google.code.findbugs:jsr305:${versions.jsr305}",

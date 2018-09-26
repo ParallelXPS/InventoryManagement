@@ -20,6 +20,7 @@ dependencies {
   testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
   testCompile 'junit:junit'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
+  testCompile libraries.byteBuddy
   testCompile libraries.h2
   testCompile libraries.inject
   testCompile libraries.liquibase
