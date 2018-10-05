@@ -1,12 +1,11 @@
 package com.parallelxps.graphql.inventory.data.sql;
 
+import javax.sql.DataSource;
 import org.jooq.Configuration;
 import org.jooq.SQLDialect;
 import org.jooq.conf.Settings;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultExecuteListenerProvider;
-
-import javax.sql.DataSource;
 
 public enum JooqConfiguration {
   JooqConfiguration;

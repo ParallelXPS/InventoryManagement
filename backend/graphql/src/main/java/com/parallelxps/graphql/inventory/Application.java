@@ -1,15 +1,14 @@
 package com.parallelxps.graphql.inventory;
 
+import static com.parallelxps.graphql.inventory.data.sql.JooqConfiguration.JooqConfiguration;
+
+import javax.sql.DataSource;
 import org.jooq.Configuration;
 import org.jooq.SQLDialect;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import javax.sql.DataSource;
-
-import static com.parallelxps.graphql.inventory.data.sql.JooqConfiguration.JooqConfiguration;
 
 @SpringBootApplication
 public class Application {

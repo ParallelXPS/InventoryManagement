@@ -4,6 +4,10 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
+configurations.testCompile {
+  exclude group: 'junit', module: 'junit'
+}
+
 dependencies {
   annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
   compile 'org.springframework.boot:spring-boot-starter-actuator'
@@ -18,10 +22,30 @@ dependencies {
   compile libraries.postgres
   compile project(':schema')
   testAnnotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-  testCompile 'junit:junit'
   testCompile 'org.springframework.boot:spring-boot-starter-test'
   testCompile libraries.byteBuddy
   testCompile libraries.h2
   testCompile libraries.inject
+  testCompile libraries.jupiterApi
   testCompile libraries.liquibase
+  testRuntime libraries.jupiterEngine
+}
+
+test {
+  useJUnitPlatform()
+
+  afterSuite { desc, result ->
+    if (!desc.parent) {
+      println "Test result: ${result.resultType}"
+      println "Test summary: ${result.testCount} tests, " +
+          "${result.successfulTestCount} succeeded, " +
+          "${result.failedTestCount} failed, " +
+          "${result.skippedTestCount} skipped"
+    }
+  }
+
+  testLogging {
+    events 'passed', 'skipped', 'failed'
+    showStandardStreams = true
+  }
 }

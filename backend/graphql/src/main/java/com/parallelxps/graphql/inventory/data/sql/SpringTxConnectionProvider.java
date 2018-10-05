@@ -1,12 +1,11 @@
 package com.parallelxps.graphql.inventory.data.sql;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.sql.DataSource;
 import org.jooq.ConnectionProvider;
 import org.jooq.exception.DataAccessException;
 import org.springframework.jdbc.datasource.DataSourceUtils;
-
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class SpringTxConnectionProvider implements ConnectionProvider {
   private final DataSource ds;
@@ -15,9 +14,7 @@ public class SpringTxConnectionProvider implements ConnectionProvider {
     this.ds = ds;
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public Connection acquire() {
     try {
@@ -27,9 +24,7 @@ public class SpringTxConnectionProvider implements ConnectionProvider {
     }
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public void release(Connection conn) {
     try {

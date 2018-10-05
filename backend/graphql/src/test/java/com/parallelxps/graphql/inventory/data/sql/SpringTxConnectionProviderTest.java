@@ -1,33 +1,37 @@
 package com.parallelxps.graphql.inventory.data.sql;
 
-import org.jooq.exception.DataAccessException;
-import org.junit.Test;
-
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.sql.DataSource;
+import org.jooq.exception.DataAccessException;
+import org.junit.jupiter.api.Test;
+
 public class SpringTxConnectionProviderTest {
-  @Test(expected = DataAccessException.class)
+  @Test
   public void shouldThrowOnAcquire() throws SQLException {
     var ds = mock(DataSource.class);
 
     when(ds.getConnection()).thenThrow(new SQLException());
 
-    provider(ds).acquire();
+    var provider = provider(ds);
+
+    assertThrows(DataAccessException.class, provider::acquire);
   }
 
-  @Test(expected = DataAccessException.class)
+  @Test
   public void shouldThrowOnRelease() throws SQLException {
     var ds = mock(DataSource.class);
     var conn = mock(Connection.class);
 
     doThrow(new SQLException()).when(conn).close();
 
-    provider(ds).release(conn);
+    var provider = provider(ds);
+
+    assertThrows(DataAccessException.class, () -> provider.release(conn));
   }
 
   @Test
