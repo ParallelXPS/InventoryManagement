@@ -1,7 +1,7 @@
 ext {
   versions = [
     activation: '1.1.1',
-    byteBuddy: '1.9.0',
+    byteBuddy: '1.9.2',
     commonsLang3: '3.8.1',
     graphql: '5.0.4',
     graphqlTools: '5.3.3',
